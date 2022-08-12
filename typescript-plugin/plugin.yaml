@@ -1,0 +1,49 @@
+name: typescript-plugin
+description: Describe your plugin explaining its purpose
+display-name: typescript-plugin
+picture: plugin.png
+category: backend # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#category
+compatibility:
+  - java
+  - spring
+about: docs/about.md
+usage: docs/usage.md
+use-case: docs/use-case.md
+implementation: docs/implementation.md
+technologies: # Ref: https://docs.stackspot.com/latest/docs/creators-guide/yaml/#technologies
+  - "Api"
+types:
+  - app
+inputs:
+  - label: Informe a descrição do projeto
+    type: text
+    name: project_description
+    default: Projeto Criado com StackSpot
+hooks:
+  - type: run
+    trigger: before-render
+    mac:
+      - rm index.js
+    linux:
+      - rm index.js
+    windows:
+      - del index.js
+  - type: run
+    trigger: after-render
+    commands:
+      - echo "Instalando dependências..."
+  - type: run
+    trigger: after-render
+    mac:
+      - npm install
+      - npm run build
+    linux:
+      - npm install
+      - npm run build
+    windows:
+      - npm.cmd install
+      - npm.cmd run build
+  - type: run
+    trigger: after-render
+    commands:
+      - echo "Teste o plugin executando `node index`"

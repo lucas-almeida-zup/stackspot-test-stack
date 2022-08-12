@@ -1,0 +1,10 @@
+name: novo-template
+description: Describe your template explaining its purpose
+types:
+  - app-template
+inputs:
+  - label: Project name
+    type: text
+    name: project_name
+    default: project-name
+    global: true
